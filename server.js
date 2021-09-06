@@ -21,5 +21,5 @@ const userApiRoute = require("./surveyApi/user");
 
 app.use("/user",userApiRoute);
 
-const port = process.env.port||5000;
+const port = process.env.port||8080;
 app.listen(port,()=>console.log(`server on port ${port}`));
