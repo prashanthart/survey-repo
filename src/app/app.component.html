@@ -5,32 +5,35 @@
 <form class="form-control" #ref = "ngForm" (ngSubmit)="formsubmit(ref)">
   <div class ="mb-3 ">
   <label for="name">Name</label>
-  <input type="text" class="form-control" #name="ngModel" [class.is-invalid]="name.invalid && name.touched" id="name" name="name" required ngModel>
+  <input type="text" class="form-control" #name="ngModel" [class.is-invalid]="name.invalid && name.touched" id="name" name="name" required ngModel autocomplete="off">
   <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is required</small>
   </div>
   <div class ="mb-3 ">
-    <label for="loc">Location</label>
-    <input type="text" class="form-control" id="loc" #loc = "ngModel" [class.is-invalid]="loc.invalid && loc.touched" required name="loc" ngModel>
+    <label for="loc">Location <img width ="10px" height="15px"  style="display: inline-block; margin-bottom: 1px;"  src="https://i.pinimg.com/originals/9b/56/f5/9b56f50e5f4a28da700b0c991d96b5c7.png" alt=""></label>
+    <input autocomplete="off" type="text" class="form-control" id="loc" #loc = "ngModel" [class.is-invalid]="loc.invalid && loc.touched" required name="loc" ngModel>
     <small class="text-danger" [class.d-none]="loc.valid || loc.untouched">Location is required</small>
     </div>
 
     <div class="mb-3">
       <label for="food">which food you like most?</label>
-      <select #food="ngModel" required
+      <select #food="ngModel" required autocomplete="off"
         class="form-select" (blur)="validate(food.value)" (change)="validate(food.value)"
         name="food" id="food" [class.is-invalid]="haserrors && food.touched"  ngModel>
         <option value="" selected>choose the option</option>
         <option *ngFor = "let o of items">{{o}}</option>
+        <!-- <span *ngIf=""></span> -->
+        <img src="" alt="">
       </select>
       <small class="text-danger" [class.d-none]="!haserrors || food.untouched">Please select a option</small>
     </div>
     <div class="mb-3" [class.d-none]="!inputField" >
       <label for="other_food">What other food you like?</label>
-      <input type="text" id="other_food" name ="other_food" #other_food="ngModel" class="form-control"  ngModel>
+      <input autocomplete="off" type="text" id="other_food" name ="other_food" #other_food="ngModel" class="form-control"  ngModel>
       <!-- <small class="text-danger" [class.d-none]="other_food.valid || other_food.untouched">Food name is required</small> -->
     </div>
     <div class="mb-3">
       <button [disabled] = "ref.form.invalid" class="btn btn-primary d-block ms-auto" type="submit">submit</button>
+     <!-- <a  class="btn btn-primary d-block ms-auto" type = "button">submit</a> -->
     </div>
 </form>
 </div>
