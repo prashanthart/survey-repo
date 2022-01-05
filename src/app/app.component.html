@@ -1,38 +1,49 @@
-<h3 class="text-center text-primary">Food Survey</h3>
+<h3 class="text-center text-primary mt-3 mb-1 heading">Food Survey</h3>
+<div class="images">
+<!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-Kt6EQScVZ4RlRvHQoV3t4bPDTUPxSqf6lg&usqp=CAU" width="25px" class="" alt=""> -->
+<img src="https://icons.iconarchive.com/icons/lemon-liu/recipes/512/recipe-chicken-icon.png" width="30px" alt="">
+<img src="https://cdn2.iconfinder.com/data/icons/food-and-beverage-02-fill-style/64/meat-lamb-mutton-fresh-butcher-food-raw-512.png" width="25px" class="" alt="">
+<img src="https://cdn3.iconfinder.com/data/icons/food-and-ingredients/512/Food_and_Drinks_Fish_dish-01-512.png" width="25px" class="" alt=""> 
+
+</div>
 <!-- {{ref.value|json}} -->
 <hr>
 <div class="container">
 <form class="form-control" #ref = "ngForm" (ngSubmit)="formsubmit(ref)">
   <div class ="mb-3 ">
   <label for="name">Name</label>
-  <input type="text" class="form-control" #name="ngModel" [class.is-invalid]="name.invalid && name.touched" id="name" name="name" required ngModel>
+  <input type="text" class="form-control" #name="ngModel" [class.is-invalid]="name.invalid && name.touched" id="name" name="name" required ngModel autocomplete="off">
   <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is required</small>
   </div>
   <div class ="mb-3 ">
-    <label for="loc">Location</label>
-    <input type="text" class="form-control" id="loc" #loc = "ngModel" [class.is-invalid]="loc.invalid && loc.touched" required name="loc" ngModel>
+    <label for="loc">Location <img width ="10px" height="15px"  style="display: inline-block; margin-bottom: 1px;"  src="https://i.pinimg.com/originals/9b/56/f5/9b56f50e5f4a28da700b0c991d96b5c7.png" alt=""></label>
+    <input autocomplete="off" type="text" class="form-control" id="loc" #loc = "ngModel" [class.is-invalid]="loc.invalid && loc.touched" required name="loc" ngModel>
     <small class="text-danger" [class.d-none]="loc.valid || loc.untouched">Location is required</small>
     </div>
 
     <div class="mb-3">
       <label for="food">which food you like most?</label>
-      <select #food="ngModel" required
+      <select #food="ngModel" required autocomplete="off"
         class="form-select" (blur)="validate(food.value)" (change)="validate(food.value)"
         name="food" id="food" [class.is-invalid]="haserrors && food.touched"  ngModel>
         <option value="" selected>choose the option</option>
         <option *ngFor = "let o of items">{{o}}</option>
+        <!-- <span *ngIf=""></span> -->
+        <img src="" alt="">
       </select>
       <small class="text-danger" [class.d-none]="!haserrors || food.untouched">Please select a option</small>
     </div>
     <div class="mb-3" [class.d-none]="!inputField" >
       <label for="other_food">What other food you like?</label>
-      <input type="text" id="other_food" name ="other_food" #other_food="ngModel" class="form-control"  ngModel>
+      <input autocomplete="off" type="text" id="other_food" name ="other_food" #other_food="ngModel" class="form-control"  ngModel>
       <!-- <small class="text-danger" [class.d-none]="other_food.valid || other_food.untouched">Food name is required</small> -->
     </div>
     <div class="mb-3">
       <button [disabled] = "ref.form.invalid" class="btn btn-primary d-block ms-auto" type="submit">submit</button>
+     <!-- <a  class="btn btn-primary d-block ms-auto" type = "button">submit</a> -->
     </div>
 </form>
+<h5 class="text-secondary mt-3">@prashanth</h5>
 </div>
 <div>
   <router-outlet></router-outlet>
